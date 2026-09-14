@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const menuClass = ({ isActive }) =>
     `flex items-center gap-3 rounded-lg px-4 py-3 transition ${
@@ -15,12 +16,28 @@ function AdminLayout({ children }) {
     setSidebarOpen(false);
   };
 
+  // ============================================================
+  // LOGOUT
+  // ============================================================
+
+  const handleLogout = () => {
+    // Remove saved login information
+    localStorage.removeItem("admin");
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("admin");
+    sessionStorage.removeItem("token");
+
+    // Close mobile sidebar
+    setSidebarOpen(false);
+
+    // Go back to login page
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="min-h-screen bg-slate-100">
 
-      {/* =====================================================
-          MOBILE OVERLAY
-      ====================================================== */}
+      {/* MOBILE OVERLAY */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
@@ -28,9 +45,7 @@ function AdminLayout({ children }) {
         />
       )}
 
-      {/* =====================================================
-          SIDEBAR
-      ====================================================== */}
+      {/* SIDEBAR */}
       <aside
         className={`
           fixed left-0 top-0 z-50 h-screen w-64
@@ -69,10 +84,7 @@ function AdminLayout({ children }) {
 
         </div>
 
-
-        {/* =====================================================
-            MENU
-        ====================================================== */}
+        {/* MENU */}
         <nav className="p-4">
 
           <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
@@ -81,7 +93,6 @@ function AdminLayout({ children }) {
 
           <div className="space-y-1">
 
-            {/* DASHBOARD */}
             <NavLink
               to="/admin"
               end
@@ -92,8 +103,6 @@ function AdminLayout({ children }) {
               <span>Dashboard</span>
             </NavLink>
 
-
-            {/* STUDENTS */}
             <NavLink
               to="/admin/students"
               className={menuClass}
@@ -103,8 +112,6 @@ function AdminLayout({ children }) {
               <span>Students</span>
             </NavLink>
 
-
-            {/* DEPARTMENTS */}
             <NavLink
               to="/admin/departments"
               className={menuClass}
@@ -114,8 +121,6 @@ function AdminLayout({ children }) {
               <span>Departments</span>
             </NavLink>
 
-
-            {/* EXAMS */}
             <NavLink
               to="/admin/exams"
               className={menuClass}
@@ -124,9 +129,7 @@ function AdminLayout({ children }) {
               <span className="text-lg">📝</span>
               <span>Exams</span>
             </NavLink>
-
-
-            {/* EXAMINATION HALLS */}
+            
             <NavLink
               to="/admin/halls"
               className={menuClass}
@@ -136,8 +139,6 @@ function AdminLayout({ children }) {
               <span>Examination Halls</span>
             </NavLink>
 
-
-            {/* HALL ALLOTMENT */}
             <NavLink
               to="/admin/allotment"
               className={menuClass}
@@ -149,10 +150,7 @@ function AdminLayout({ children }) {
 
           </div>
 
-
-          {/* =================================================
-              REPORTS
-          ================================================== */}
+          {/* REPORTS */}
           <p className="mb-3 mt-8 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
             Reports
           </p>
@@ -168,14 +166,12 @@ function AdminLayout({ children }) {
 
         </nav>
 
-
-        {/* =====================================================
-            LOGOUT
-        ====================================================== */}
+        {/* LOGOUT */}
         <div className="absolute bottom-0 left-0 right-0 border-t border-slate-700 p-4">
 
           <button
             type="button"
+            onClick={handleLogout}
             className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-slate-300 hover:bg-slate-800"
           >
             <span className="text-lg">🚪</span>
@@ -186,10 +182,7 @@ function AdminLayout({ children }) {
 
       </aside>
 
-
-      {/* =====================================================
-          MAIN CONTENT
-      ====================================================== */}
+      {/* MAIN CONTENT */}
       <div className="lg:pl-64">
 
         {/* HEADER */}
@@ -198,7 +191,7 @@ function AdminLayout({ children }) {
           {/* LEFT */}
           <div className="flex items-center gap-4">
 
-            {/* MOBILE MENU */}
+
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
@@ -219,8 +212,7 @@ function AdminLayout({ children }) {
 
           </div>
 
-
-          {/* RIGHT - ADMIN PROFILE */}
+          {/* ADMIN PROFILE */}
           <div className="flex items-center gap-3">
 
             <div className="hidden text-right sm:block">
@@ -243,10 +235,7 @@ function AdminLayout({ children }) {
 
         </header>
 
-
-        {/* =====================================================
-            PAGE CONTENT
-        ====================================================== */}
+        {/* PAGE CONTENT */}
         <main className="w-full overflow-x-hidden">
 
           <div className="w-full p-4 sm:p-6 lg:p-8">
