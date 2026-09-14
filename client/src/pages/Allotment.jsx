@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://exam-hall-allotment-api.onrender.com/api";
 
 export default function Allotment() {
   const [exams, setExams] = useState([]);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://exam-hall-allotment-api.onrender.com/api";
 
 function Dashboard() {
   const [students, setStudents] = useState([]);

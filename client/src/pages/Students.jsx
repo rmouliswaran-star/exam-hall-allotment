@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 
-const API_URL = "http://localhost:5000/api/students";
-const DEPARTMENT_API_URL = "http://localhost:5000/api/departments";
+const API_URL = "https://exam-hall-allotment-api.onrender.com/api/students";
+const DEPARTMENT_API_URL = "https://exam-hall-allotment-api.onrender.com/api/departments";
 
 const STUDENTS_PER_PAGE = 10;
 

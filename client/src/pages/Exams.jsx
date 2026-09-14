@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/exams";
+const API_URL = "https://exam-hall-allotment-api.onrender.com/api/exams";
 
 function Exams() {
   // =========================================================

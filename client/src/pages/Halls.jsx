@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/halls";
+const API_URL = "https://exam-hall-allotment-api.onrender.com/api/halls";
 
 const emptyForm = {
   hall_number: "",
