@@ -6,6 +6,7 @@ const emptyForm = {
   hall_number: "",
   building: "",
   floor: "",
+  capacity: 30,
   is_active: 1,
 };
 
@@ -87,6 +88,7 @@ function Halls() {
       hall_number: hall.hall_number || "",
       building: hall.building || "",
       floor: hall.floor || "",
+      capacity: hall.capacity || 30,
       is_active: Number(hall.is_active) === 1 ? 1 : 0,
     });
 
@@ -142,6 +144,7 @@ function Halls() {
         hall_number: hallNumber,
         building: form.building.trim(),
         floor: form.floor.trim(),
+        capacity: Number(form.capacity),
         is_active: Number(form.is_active),
       };
 
@@ -538,6 +541,18 @@ function Halls() {
                 />
 
               </div>
+
+              {/* CAPACITY */}
+
+              <InputField
+                label="Student Capacity"
+                name="capacity"
+                type="number"
+                value={form.capacity}
+                onChange={handleChange}
+                placeholder="Example: 30"
+                required
+              />
 
               {/* ACTIVE */}
 
