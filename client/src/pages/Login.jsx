@@ -151,7 +151,7 @@ function Login() {
             </h2>
 
             <p className="mt-2 text-xl font-medium text-blue-100 sm:text-2xl">
-              Management System
+              & Management System
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
