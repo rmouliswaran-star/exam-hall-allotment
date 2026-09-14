@@ -151,13 +151,13 @@ function Login() {
             </h2>
 
             <p className="mt-2 text-xl font-medium text-blue-100 sm:text-2xl">
-              & Seating Management System
+              Management System
             </p>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-blue-100 sm:text-lg">
               A centralized examination management platform designed
               to simplify student management, examination scheduling,
-              hall allocation and seating arrangements.
+              hall allocation arrangements.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -165,10 +165,7 @@ function Login() {
               <div className="rounded-full border border-blue-400/50 bg-blue-600/40 px-4 py-2 text-sm text-blue-100">
                 Smart Allotment
               </div>
-
-              <div className="rounded-full border border-blue-400/50 bg-blue-600/40 px-4 py-2 text-sm text-blue-100">
-                Seating Management
-              </div>
+            
 
               <div className="rounded-full border border-blue-400/50 bg-blue-600/40 px-4 py-2 text-sm text-blue-100">
                 Exam Management
